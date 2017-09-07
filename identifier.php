@@ -1,21 +1,34 @@
 <?php
-//test 生成权限值
-$str = [];
-for ($i=0; $i<=31; $i++){
-    $str[] =  pow(2,$i);
-}
-print_r($str);
-
-//求当前值中有几票权
-function getONE( $number )
+/**
+ * 根据权限值，取权限票
+ * @param $number
+ * @return array
+ */
+function getOne( $number )
 {
     $keylist = [];
     for($i=0; $i<=31; $i++)
     {
-        if( ($number<<$i) &  0x80000000)
-            $keylist[(31-$i)] = pow(2,(31-$i)) ;
+        (($number<<$i) & 0x80000000) && ($keylist[(31-$i)] = pow(2,(31-$i)));
     }
     return $keylist;
 }
+
+/**
+ * 消费一票权限
+ * @param $number
+ * @return mixed
+ */
+function payOne( &$number )
+{
+    $one = array_pop( getOne($number) );
+    $number = $number  & ~$one;
+    return $one;
+}
 //test
-print_r(getONE( 48 ));
+$a = 48;
+echo $a;
+$b = payOne($a);
+echo($a);
+echo "\n";
+echo($b);
