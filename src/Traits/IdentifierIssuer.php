@@ -1,8 +1,12 @@
 <?php
+/**
+ *  Authority issuer
+ */
 namespace Gitmagox\Identifier\Traits;
 
-trait  PermissionIdentifier
+trait  IdentifierIssuer
 {
+    //Assignable authority
     protected $identifiers;
     /**
      * Parse Authority Identifier
@@ -20,7 +24,7 @@ trait  PermissionIdentifier
     /**
      *  Get one ticket authority Identifier
      */
-    function getTicket()
+    function issueTicket()
     {
         $ticket = array_pop( $this->parseAuthorityIdentifier());
         $this->identifiers = $this->identifiers  & ~$one;
@@ -30,7 +34,7 @@ trait  PermissionIdentifier
     /**
      * revoke one ticket authority Identifier
      */
-    public function revokeTicket( $authority )
+    public function backTicket( $authority )
     {
         $this->identifiers = $this->identifiers | $authority;
     }
