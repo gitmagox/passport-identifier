@@ -3,15 +3,16 @@
 
 trait  PermissionIdentifier
 {
+    protected $identifiers;
     /**
      * Parse Authority Identifier
      */
-    function parseAuthorityIdentifier( $number )
+    public function parseAuthorityIdentifier()
     {
         $keylist = [];
         for($i=0; $i<=31; $i++)
         {
-            (($number<<$i) & 0x80000000) && ($keylist[(31-$i)] = pow(2,(31-$i)));
+            (($this->identifiers<<$i) & 0x80000000) && ($keylist[(31-$i)] = pow(2,(31-$i)));
         }
         return $keylist;
     }
@@ -19,11 +20,11 @@ trait  PermissionIdentifier
     /**
      *  Get one ticket authority Identifie
      */
-    function getOneTicketFromAuthority( $number )
+    function getOneTicketFromAuthority()
     {
-        $one = array_pop( getOne($number) );
-        $number = $number  & ~$one;
-        return $one;
+        $ticket = array_pop( $this->parseAuthorityIdentifier());
+        $this->identifiers = $this->identifiers  & ~$one;
+        return $ticket;
     }
 
 }
