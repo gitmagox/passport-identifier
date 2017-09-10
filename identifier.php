@@ -18,13 +18,21 @@ trait  PermissionIdentifier
     }
 
     /**
-     *  Get one ticket authority Identifie
+     *  Get one ticket authority Identifier
      */
-    function getOneTicketFromAuthority()
+    function getTicket()
     {
         $ticket = array_pop( $this->parseAuthorityIdentifier());
         $this->identifiers = $this->identifiers  & ~$one;
         return $ticket;
+    }
+
+    /**
+     * revoke one ticket authority Identifier
+     */
+    public function revokeTicket( $authority )
+    {
+        $this->identifiers = $this->identifiers | $authority;
     }
 
 }
