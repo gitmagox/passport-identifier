@@ -1,5 +1,5 @@
 <?php
-
+namespace Gitmagox\Identifier\Traits;
 
 trait  PermissionIdentifier
 {
