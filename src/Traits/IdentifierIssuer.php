@@ -8,12 +8,22 @@ use Gitmagox\Identifier\Provider\IdentifierProvider;
 
 trait  IdentifierIssuer
 {
-    //Assignable authority
+    /**
+     * Assignable authority
+     */
     protected $identifiers;
 
+    /**
+     * set identifier from identifierprovider;
+     */
     public function setIdentifier(IdentifierProvider $identifierProvider)
     {
-        $identifierProvider->setIdetifier($this->identifiers);
+        $this->identifiers = $identifierProvider->getIdetifier();
+    }
+    //back save identifier for identifierprovider;
+    public function backIdentifier( IdentifierProvider $identifierProvider )
+    {
+        $identifierProvider->setIdetifier( $this->identifiers );
     }
     /**
      * Parse Authority Identifier
