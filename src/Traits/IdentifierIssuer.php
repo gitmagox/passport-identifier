@@ -4,14 +4,16 @@
  */
 namespace Gitmagox\Identifier\Traits;
 
+use Gitmagox\Identifier\Provider\IdentifierProvider;
+
 trait  IdentifierIssuer
 {
     //Assignable authority
     protected $identifiers;
 
-    public function setIdentifier($number)
+    public function setIdentifier(IdentifierProvider $identifierProvider)
     {
-        $this->identifiers = $number;
+        $identifierProvider->setIdetifier($this->identifiers);
     }
     /**
      * Parse Authority Identifier
