@@ -8,6 +8,11 @@ trait  IdentifierIssuer
 {
     //Assignable authority
     protected $identifiers;
+
+    public function setIdentifier($number)
+    {
+        $this->identifiers = $number;
+    }
     /**
      * Parse Authority Identifier
      */
