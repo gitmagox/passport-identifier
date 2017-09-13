@@ -4,6 +4,7 @@
  */
 namespace Gitmagox\Identifier\Traits;
 
+use Gitmagox\Identifier\Provider\IdentifierConsumer;
 use Gitmagox\Identifier\Provider\IdentifierProvider;
 
 trait  IdentifierIssuer
@@ -16,14 +17,26 @@ trait  IdentifierIssuer
     /**
      * set identifier from identifierprovider;
      */
-    public function setIdentifier(IdentifierProvider $identifierProvider)
+    public function setIdentifier(IdentifierProvider $identifierProvider, IdentifierConsumer $identifierConsumer)
     {
-        $this->identifiers = $identifierProvider->getIdetifier();
+        $this->provider = $identifierProvider;
+        $this->consumer = $identifierConsumer;
+        $this->setIdentifierFromProvider();
+        return $this;
     }
-    //back save identifier for identifierprovider;
-    public function backIdentifier( IdentifierProvider $identifierProvider )
+    /**
+     * set identifier from identifierprovider;
+     */
+    public function setIdentifierFromProvider()
     {
-        $identifierProvider->setIdetifier( $this->identifiers );
+        $this->identifiers = $this->provider->getIdetifier();
+        return $this;
+    }
+
+    //back save identifier for identifierprovider;
+    public function backIdentifierToProvider( )
+    {
+        return $this->provider->setIdetifier( $this->identifiers );
     }
     /**
      * Parse Authority Identifier
@@ -44,7 +57,7 @@ trait  IdentifierIssuer
     function issueTicket()
     {
         $ticket = array_pop( $this->parseAuthorityIdentifier());
-        $this->identifiers = $this->identifiers  & ~$one;
+        $this->identifiers = $this->identifiers  & ~$ticket[0];
         return $ticket;
     }
 
