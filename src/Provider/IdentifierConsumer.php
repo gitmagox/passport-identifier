@@ -1,11 +1,10 @@
 <?php
 /**
- * identifierprovider
+ * 权限值消费者
  */
 namespace Gitmagox\Identifier\Provider;
-
-interface IdentifierProvider
+interface IdentifierConsumer
 {
     public function getIdetifier();
-    public function setIdetifier();
+    public function setIdetifier($number);
 }
