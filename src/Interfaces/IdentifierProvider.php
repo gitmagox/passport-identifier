@@ -1,9 +1,10 @@
 <?php
 /**
- * 权限值消费者
+ * identifierprovider
  */
-namespace Gitmagox\Identifier\Provider;
-interface IdentifierConsumer
+namespace Gitmagox\Identifier\Interfaces;
+
+interface IdentifierProvider
 {
     public function getIdetifier();
     public function setIdetifier($number);

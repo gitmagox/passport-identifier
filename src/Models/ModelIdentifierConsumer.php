@@ -4,7 +4,7 @@
  */
 namespace Gitmagox\Identifier\Models;
 
-use Gitmagox\Identifier\Provider\IdentifierConsumer;
+use Gitmagox\Identifier\Interfaces\IdentifierConsumer;
 use Illuminate\Database\Eloquent\Model;
 
 class ModelIdentifierConsumer extends Model implements IdentifierConsumer

@@ -4,7 +4,7 @@
  */
 namespace Gitmagox\Identifier\Models;
 
-use Gitmagox\Identifier\Provider\IdentifierProvider;
+use Gitmagox\Identifier\Interfaces\IdentifierProvider;
 use Illuminate\Database\Eloquent\Model;
 
 class ModelIdentifierProvider extends Model implements IdentifierProvider
