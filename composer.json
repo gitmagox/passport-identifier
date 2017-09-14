@@ -1,0 +1,56 @@
+{
+    "name": "Gitmagox/passport-identifier",
+    "description": "Privilege management based on binary bit identification",
+    "keywords": [
+        "binary",
+        "identification",
+        "json web token",
+        "jwt",
+        "laravel"
+    ],
+    "homepage": "https://github.com/gitmagox/passport-identifier.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Magox Ge",
+            "email": "46257902@qq.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9 || ^7.0",
+        "illuminate/auth": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "illuminate/contracts": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "illuminate/http": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+    },
+    "require-dev": {
+        "illuminate/console": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "illuminate/database": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "illuminate/routing": "5.1.* || 5.2.* || 5.3.* || 5.4.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "Gitmagox\\Identifier\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gitmagox\\Identifier\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "scripts": {
+        "test" : "phpunit --colors=always",
+        "test:ci": "composer test -- --verbose --coverage-text --coverage-clover=coverage.xml"
+    }
+}
