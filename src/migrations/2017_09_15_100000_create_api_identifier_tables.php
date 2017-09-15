@@ -15,7 +15,7 @@ class CreateAdminTables extends Migration
         $connection = config('identifier.database.connection') ?: config('database.default');
 
         //服务表
-        Schema::connection($connection)->create('service_or_controller', function (Blueprint $table) {
+        Schema::connection($connection)->create(config('identifier.database.service_or_controller_table'), function (Blueprint $table) {
             $table->increments('id')->comment('服务或控制器ID');
             $table->string('name',50)->comment('服务或控制器名字');
             $table->string('slug', 100)->unique()->comment('服务标识');
@@ -24,7 +24,7 @@ class CreateAdminTables extends Migration
             $table->timestamps();
         });
         //接口或方法表
-        Schema::connection($connection)->create('api_or_method', function (Blueprint $table) {
+        Schema::connection($connection)->create(config('identifier.database.api_or_method_table'), function (Blueprint $table) {
             $table->increments('id')->comment('接口或方法ID');
             $table->unsignedInteger('service_id')->comment('所属服务或控制器');
             $table->string('name',50)->comment('接口或方法名字');
@@ -43,7 +43,7 @@ class CreateAdminTables extends Migration
     public function down()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
-        Schema::connection($connection)->dropIfExists(config('identifier.database.service_or_controller'));
-        Schema::connection($connection)->dropIfExists(config('identifier.database.api_or_method'));
+        Schema::connection($connection)->dropIfExists(config('identifier.database.service_or_controller_table'));
+        Schema::connection($connection)->dropIfExists(config('identifier.database.api_or_method_table'));
     }
 }
