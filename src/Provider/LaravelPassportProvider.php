@@ -1,15 +1,32 @@
 <?php
 
 namespace Gitmagox\Identifier\Providers;
+use Illuminate\Support\ServiceProvider;
 
-class LaravelPassportProvider extends AbstractServiceProvider
+class LaravelPassportProvider extends ServiceProvider
 {
+    /**
+     * @var array
+     */
+    protected $commands = [
+
+    ];
     /**
      * {@inheritdoc}
      */
     public function boot()
     {
 
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->commands($this->commands);
     }
 
     /**
