@@ -13,6 +13,13 @@ class CreateAdminTables extends Migration
     public function up()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
+        //角色表
+        Schema::connection($connection)->create('admin_role', function (Blueprint $table) {
+            $table->increments('id')->comment('ID');
+            $table->string('name', 50)->comment('角色名');
+            $table->string('slug', 60)->unique()->comment('角色标识');
+            $table->timestamps();
+        });
 
         //服务表
         Schema::connection($connection)->create(config('identifier.database.service_or_controller_table'), function (Blueprint $table) {
