@@ -9,7 +9,7 @@ class LaravelPassportProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-
+        'Gitmagox\Identifier\Commands\InstallCommand',
     ];
     /**
      * {@inheritdoc}
