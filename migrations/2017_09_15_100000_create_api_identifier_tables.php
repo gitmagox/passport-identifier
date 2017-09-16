@@ -14,7 +14,7 @@ class CreateAdminTables extends Migration
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
         //角色表
-        Schema::connection($connection)->create('admin_role', function (Blueprint $table) {
+        Schema::connection($connection)->create(config('identifier.database.admin_tole_table'), function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('name', 50)->comment('角色名');
             $table->string('slug', 60)->unique()->comment('角色标识');
