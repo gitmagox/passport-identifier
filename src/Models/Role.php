@@ -15,7 +15,7 @@ class Role extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $connection = config('admin.database.connection') ?: config('database.default');
+        $connection = config('identifier.database.connection') ?: config('database.default');
 
         $this->setConnection($connection);
 
