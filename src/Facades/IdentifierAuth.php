@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of IdentifierAuth.
  */
@@ -12,8 +11,6 @@ class IdentifierAuth extends Facade
 {
     /**
      * Get the registered name of the component.
-     *
-     * @return string
      */
     protected static function getFacadeAccessor()
     {
