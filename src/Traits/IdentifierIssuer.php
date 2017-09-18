@@ -46,10 +46,12 @@ trait  IdentifierIssuer
      */
     public function parseAuthorityIdentifier()
     {
+        $bit = config('identifier.bit')-1;
         $keylist = [];
-        for($i=0; $i<=31; $i++)
+        for($i=0; $i<=$bit; $i++)
         {
-            (($this->identifiers<<$i) & 0x80000000) && ($keylist[(31-$i)] = pow(2,(31-$i)));
+            (($this->identifiers<<$i) & 0x80000000) &&
+            ($keylist[($bit-$i)] = pow(2,($bit-$i)));
         }
         return $keylist;
     }
