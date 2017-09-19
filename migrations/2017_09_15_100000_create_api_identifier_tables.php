@@ -60,6 +60,7 @@ class CreateAdminTables extends Migration
     public function down()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
+        Schema::connection($connection)->dropIfExists(config('identifier.database.admin_role_table'));
         Schema::connection($connection)->dropIfExists(config('identifier.database.service_or_controller_table'));
         Schema::connection($connection)->dropIfExists(config('identifier.database.api_or_method_table'));
     }
