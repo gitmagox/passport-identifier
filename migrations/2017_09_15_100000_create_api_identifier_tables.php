@@ -14,7 +14,7 @@ class CreateAdminTables extends Migration
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
 
-        Schema::connection($connection)->create(config('identifier.database.users_table'), function (Blueprint $table) {
+        Schema::connection($connection)->create(config('identifier.database.admin_user_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('username', 190)->unique();
             $table->string('password', 60);
@@ -60,6 +60,7 @@ class CreateAdminTables extends Migration
     public function down()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
+        Schema::connection($connection)->dropIfExists(config('identifier.database.admin_user_table'));
         Schema::connection($connection)->dropIfExists(config('identifier.database.admin_role_table'));
         Schema::connection($connection)->dropIfExists(config('identifier.database.service_or_controller_table'));
         Schema::connection($connection)->dropIfExists(config('identifier.database.api_or_method_table'));

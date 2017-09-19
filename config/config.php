@@ -41,6 +41,7 @@ return [
         'service_or_controller_table'    => 'service_or_controller',
         'api_or_method_table'            => 'api_or_method',
         'admin_role_table'               => 'admin_role',
+        'admin_user_table'               => 'admin_user',
 
 
     ],
