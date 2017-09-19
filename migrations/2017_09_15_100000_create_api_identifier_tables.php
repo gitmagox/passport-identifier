@@ -13,6 +13,16 @@ class CreateAdminTables extends Migration
     public function up()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
+
+        Schema::connection($connection)->create(config('identifier.database.users_table'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username', 190)->unique();
+            $table->string('password', 60);
+            $table->string('name');
+            $table->string('avatar')->nullable();
+            $table->string('remember_token', 100)->nullable();
+            $table->timestamps();
+        });
         //角色表
         Schema::connection($connection)->create(config('identifier.database.admin_tole_table'), function (Blueprint $table) {
             $table->increments('id')->comment('ID');
