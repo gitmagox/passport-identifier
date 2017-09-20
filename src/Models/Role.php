@@ -23,4 +23,15 @@ class Role extends Model
         parent::__construct($attributes);
     }
 
+    /**
+     * A role belongs to many users.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function administrators()
+    {
+        $pivotTable = config('identifier.database.role_users_table');
+        return $this->belongsToMany('Gitmagox\Identifier\Models\Administrator', $pivotTable, 'role_id', 'user_id');
+    }
+
 }

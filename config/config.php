@@ -42,6 +42,7 @@ return [
         'api_or_method_table'            => 'api_or_method',
         'admin_role_table'               => 'admin_role',
         'admin_user_table'               => 'admin_user',
+        'role_users_table'               => 'admin_role_users',
 
 
     ],

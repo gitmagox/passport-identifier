@@ -13,7 +13,7 @@ class CreateAdminTables extends Migration
     public function up()
     {
         $connection = config('identifier.database.connection') ?: config('database.default');
-
+        //用户表
         Schema::connection($connection)->create(config('identifier.database.admin_user_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('username', 190)->unique();
@@ -28,6 +28,14 @@ class CreateAdminTables extends Migration
             $table->increments('id')->comment('ID');
             $table->string('name', 50)->comment('角色名');
             $table->string('slug', 60)->unique()->comment('角色标识');
+            $table->timestamps();
+        });
+
+        //用户角色对应表
+        Schema::connection($connection)->create(config('identifier.database.role_users_table'), function (Blueprint $table) {
+            $table->integer('role_id');
+            $table->integer('user_id');
+            $table->index(['role_id', 'user_id']);
             $table->timestamps();
         });
 
