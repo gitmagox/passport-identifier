@@ -43,6 +43,7 @@ return [
         'admin_role_table'               => 'admin_role',
         'admin_user_table'               => 'admin_user',
         'role_users_table'               => 'admin_role_users',
+        'role_service_table'             => 'role_service'
 
 
     ],
