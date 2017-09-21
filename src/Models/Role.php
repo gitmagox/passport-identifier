@@ -34,4 +34,13 @@ class Role extends Model
         return $this->belongsToMany('Gitmagox\Identifier\Models\Administrator', $pivotTable, 'role_id', 'user_id');
     }
 
+    /**
+     * 与服务多对多关系
+     */
+    public function services()
+    {
+        $pivotTable = config('identifier.database.role_service_table');
+        return $this->belongsToMany('Gitmagox\Identifier\Models\Service', $pivotTable, 'role_id', 'service_id');
+    }
+
 }

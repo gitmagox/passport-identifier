@@ -29,4 +29,14 @@ class Service extends ModelIdentifierProvider
 
         parent::__construct($attributes);
     }
+    /**
+     * A user has and belongs to many roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        $pivotTable = config('identifier.database.role_service_table');
+        return $this->belongsToMany('Gitmagox\Identifier\Models\Role', $pivotTable, 'service_id', 'role_id');
+    }
 }
